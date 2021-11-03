@@ -24,6 +24,7 @@ namespace MVC_Test_App
             services.AddDbContext<ApplicationContext>(options => options
                         .UseSqlServer(Configuration.GetConnectionString("DefaultConnectionStrings")));
 
+         
             services.AddControllersWithViews();
         }
 
@@ -53,6 +54,8 @@ namespace MVC_Test_App
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            //Seed database
+            AppDbInitializer.Seed(app);
         }
     }
 }

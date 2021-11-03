@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MVC_Test_App.Models.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace MVC_Test_App
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+
+          
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
