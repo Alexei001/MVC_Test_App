@@ -19,8 +19,8 @@ namespace MVC_Test_App.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allMovies = await _context.Movies.ToListAsync();
-            return View();
+            var allMovies = await _context.Movies.Include(movie => movie.Cinema).ToListAsync();
+            return View(allMovies);
         }
     }
 }

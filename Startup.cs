@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MVC_Test_App.Models.Data;
 using Microsoft.EntityFrameworkCore;
+using MVC_Test_App.Controllers;
+using MVC_Test_App.Data.Services;
 
 namespace MVC_Test_App
 {
@@ -24,7 +26,7 @@ namespace MVC_Test_App
             services.AddDbContext<ApplicationContext>(options => options
                         .UseSqlServer(Configuration.GetConnectionString("DefaultConnectionStrings")));
 
-         
+            services.AddScoped<IActorsService, ActorsService>();
             services.AddControllersWithViews();
         }
 

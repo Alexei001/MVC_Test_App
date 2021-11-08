@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MVC_Test_App.Data.Services;
+using MVC_Test_App.Models;
 using MVC_Test_App.Models.Data;
 using System;
 using System.Collections.Generic;
@@ -9,15 +12,22 @@ namespace MVC_Test_App.Controllers
 {
     public class ActorsController : Controller
     {
-        protected readonly ApplicationContext _context;
-        public ActorsController(ApplicationContext context)
+        protected readonly IActorsService _service;
+        public ActorsController(IActorsService service)
         {
-            _context = context;
+            this._service = service;
         }
-        public IActionResult Index()
+
+        public async Task<IActionResult> Index()
         {
-            var allActors = _context.Actors.ToList();
+            var allActors = await _service.GetAll();
             return View(allActors);
+        }
+
+        public IActionResult Create()
+        {
+
+            return View();
         }
     }
 }
